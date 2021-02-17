@@ -1,0 +1,22 @@
+<div class="row">
+<h5 style="margin-left: 5rem;margin-top: 1rem">Your Posts</h5><hr>
+  <div *ngFor="let i of result;" class="card" style="width: 20rem;  margin-top: 1rem; margin-left: 2rem;">
+
+    <div class="card-body">
+      <h5 class="card-title">{{i.item_name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">by you</h6>
+      <p class="card-text">{{i.description}}</p>
+      <div class="card-text"><b>Unit Price:</b> {{i.unit_price}} </div>
+      <div class="card-text"><b>Available Qty: </b> {{i.quantity}}</div>
+      <div class="card-text"><b>Harvest date: </b>{{i.harvest_date}}</div>
+      <div class="card-text"><b>Expire date: </b>{{i.expired_date}}</div>
+
+
+      <p></p>
+
+      <button type="button" class="btn btn-success btn-sm"  style="margin-left: 2rem">update</button>
+      <button type="button" class="btn btn-danger btn-sm" (click)="deletePost(i.item_id)" style="margin-left: 7rem">delete</button>
+
+    </div>
+  </div>
+</div>

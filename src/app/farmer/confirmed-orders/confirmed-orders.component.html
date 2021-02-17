@@ -1,0 +1,43 @@
+<p></p>
+<p></p>
+<h5 style="margin-left: 1rem">Confirmed Orders</h5>
+<hr>
+<div class="card" style="width: 83rem;  margin-top: 1rem; margin-left: 1rem;">
+
+
+  <table class="table" style="width: 83rem">
+    <thead>
+    <tr>
+      <th scope="col">Item Name</th>
+      <th scope="col">Quantity (kg)</th>
+      <th scope="col">Delivered date</th>
+      <th scope="col">Expected delivery date</th>
+      <th scope="col">Order Description</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Shipped Date</th>
+      <th scope="col">Order Description</th>
+      <th scope="col">Status</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let i of confirmed_orders;" >
+      <td>{{i.order_name}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.ship_date}}</td>
+      <td>{{i.expected_delivery_date}}</td>
+      <td>{{i.description}}</td>
+      <td>{{i.customer_id}}</td>
+      <td>{{i.ship_date}}</td>
+      <td>{{i.ord_description}}</td>
+      <td>{{ord_status}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+

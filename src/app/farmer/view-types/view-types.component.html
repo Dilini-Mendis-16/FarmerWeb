@@ -1,0 +1,61 @@
+<br>
+<div class="row">
+  <div class="col-10">
+
+  </div>
+  <div class = "col-2">
+    <button class="btn btn-sm btn-primary" (click)="open(mymodal)">Add Product type</button>
+
+  </div>
+
+</div>
+
+<div class = "row">
+
+  <div *ngFor="let i of result;" class=" card" style="width: 15rem; height:10rem; margin-top: 1rem; margin-left: 5rem ">
+
+
+    <!--        <img src="..." class="card-img-top" alt="...">-->
+    <div class="card-body">
+      <h5 class="card-title">{{i.type_name}}</h5>
+      <p class="card-text">{{i.description}}</p>
+      <button type ="button" (click)="routeTo(i.type_id)" class="btn btn-primary">view more</button>
+
+    </div>
+
+
+
+</div>
+
+
+</div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Product Type</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body col-12">
+
+
+    <form  [formGroup]="typeForm" autocomplete="off" novalidate  (ngSubmit)="onSubmit(typeForm.value)" >
+
+      <label for="typeName">Type Name</label>
+      <input type="text" id="typeName" class="form-control" formControlName="typeName" name="typeName" placeholder="Vegetable">
+
+
+      <label for="des">Item Description</label>
+      <textarea id="des" class="form-control" formControlName="des" name="des" placeholder="About"></textarea>
+
+
+      <div class="modal-footer">
+        <!--    <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add</button>-->
+        <button type="submit" class="btn btn-outline-dark">Add</button>
+
+      </div>
+    </form>
+  </div>
+
+</ng-template>

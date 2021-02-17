@@ -1,0 +1,69 @@
+<div class="card" style="width: 40rem;  margin-top: 1rem; margin-left: 5rem;">
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity (kg)</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of result;" >
+            <td>{{i.item_name}}</td>
+            <td>{{i.quantity}}</td>
+            <td><button type="button" (click)="open(mymodal,i.item_id)" class="btn btn-link" >more</button></td>
+            <td><button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">update</button></td>
+            <td><button type="button" class="btn btn-link" (click)="deleteItem(i.item_id)" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</button></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+  </div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{item.item_name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body col-12">
+
+    <table class="table table-striped">
+
+
+
+
+      <tbody>
+      <tr>
+        <th scope="row">Quantity</th>
+        <td>{{item.quantity}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Unit Price</th>
+        <td>{{item.unit_price}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Expire Date</th>
+        <td>{{item.expired_date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Harvest Date</th>
+        <td>{{item.harvest_date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Descriprion</th>
+        <td>Add the description</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+
+</ng-template>
+

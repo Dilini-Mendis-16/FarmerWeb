@@ -1,0 +1,55 @@
+<app-titlebar></app-titlebar>
+<div class="row">
+
+<div *ngFor="let i of result;" class="card" style="width: 25rem;  margin-top: 1rem; margin-left: 2rem;">
+
+  <div class="card-body">
+    <h5 class="card-title">{{i.order_name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">by {{i.customer_id}}</h6>
+    <p class="card-text">{{i.description}}</p>
+    <div class="card-text"> <b>Quantity: </b> {{i.quantity}}</div>
+    <div class="card-text"><b>Expected delivery date: </b>{{i.expected_delivery_date}}</div>
+    <p></p>
+
+    <button type="button" class="btn btn-success btn-sm" (click)="open(mymodal,i.order_id)" style="margin-left: 2rem">confirm</button>
+    <button type="button" class="btn btn-danger btn-sm" (click)="rejectOrder(i.order_id)" style="margin-left: 7rem">reject</button>
+
+</div>
+</div>
+</div>
+
+<app-confirmed-orders></app-confirmed-orders>
+
+
+
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Order Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body col-12">
+    <form  [formGroup]="orderForm" autocomplete="off" novalidate  (ngSubmit)="onSubmit(orderForm.value)" >
+
+      <label for="shipDate">Shipping date</label>
+      <input type="date" id="shipDate" class="form-control" formControlName="shipDate" name="shipDate" >
+
+
+      <label for="des">Item Description</label>
+      <textarea id="des" class="form-control" formControlName="des" name="des" placeholder="About"></textarea>
+
+
+      <div class="modal-footer">
+        <!--    <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add</button>-->
+        <button type="submit" class="btn btn-outline-dark">Add</button>
+
+      </div>
+    </form>
+
+  </div>
+
+</ng-template>
+
